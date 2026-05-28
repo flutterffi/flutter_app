@@ -1,0 +1,5 @@
+{
+  "appName": "Flutter App",
+  "environment": "development",
+  "enabledModules": ["home", "i18n", "assets", "riverpod"]
+}

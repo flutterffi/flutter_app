@@ -1,0 +1,22 @@
+{
+  "@@locale": "en",
+  "tabHome": "Home",
+  "tabDiscover": "Discover",
+  "tabWorkspace": "Workspace",
+  "tabNotifications": "Notifications",
+  "tabProfile": "Profile",
+  "homeTitle": "Flutter Starter",
+  "architectureTitle": "Recommended architecture",
+  "architectureDescription": "The project is split into app, core, shared, and modules. Each module follows model, viewmodel, view, and page folders for a clear MVVM structure.",
+  "stackTitle": "Enabled stack",
+  "configTitle": "Generated configuration",
+  "configAppName": "App name",
+  "configEnvironment": "Environment",
+  "configModules": "Modules",
+  "configLoadFailed": "Failed to load config: {message}",
+  "@configLoadFailed": {
+    "placeholders": {
+      "message": {}
+    }
+  }
+}

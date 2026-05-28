@@ -9,7 +9,7 @@ import 'package:flutter_app/src/core/network/service/mock_api_client.dart';
 part 'api_client_viewmodel.g.dart';
 
 @riverpod
-NetworkConfig networkConfig(NetworkConfigRef ref) {
+NetworkConfig networkConfig(Ref ref) {
   return const NetworkConfig(
     baseUrl: 'https://jsonplaceholder.typicode.com',
     useMockClient: true,
@@ -17,7 +17,7 @@ NetworkConfig networkConfig(NetworkConfigRef ref) {
 }
 
 @riverpod
-Dio dio(DioRef ref) {
+Dio dio(Ref ref) {
   final dio = Dio(
     BaseOptions(
       connectTimeout: const Duration(seconds: 10),
@@ -42,7 +42,7 @@ Dio dio(DioRef ref) {
 }
 
 @riverpod
-ApiClient apiClient(ApiClientRef ref) {
+ApiClient apiClient(Ref ref) {
   final config = ref.watch(networkConfigProvider);
 
   if (config.useMockClient) {

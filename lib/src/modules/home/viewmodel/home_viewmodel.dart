@@ -1,3 +1,4 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:flutter_app/src/core/network/viewmodel/api_client_viewmodel.dart';
@@ -10,7 +11,7 @@ import 'package:flutter_app/src/modules/home/model/home_highlight_model.dart';
 part 'home_viewmodel.g.dart';
 
 @riverpod
-List<HomeHighlightModel> homeViewmodel(HomeViewmodelRef ref) {
+List<HomeHighlightModel> homeViewmodel(Ref ref) {
   return const [
     HomeHighlightModel(
       title: 'MVVM modules',
@@ -37,15 +38,13 @@ final homeAppConfigProvider = FutureProvider<HomeAppConfigModel>((ref) {
 });
 
 @riverpod
-HomeApiRepository homeApiRepository(HomeApiRepositoryRef ref) {
+HomeApiRepository homeApiRepository(Ref ref) {
   final apiClient = ref.watch(apiClientProvider);
   return HomeApiRepository(apiClient: apiClient);
 }
 
 @riverpod
-Future<List<HomeApiItemModel>> homeApiListViewmodel(
-  HomeApiListViewmodelRef ref,
-) {
+Future<List<HomeApiItemModel>> homeApiListViewmodel(Ref ref) {
   final repository = ref.watch(homeApiRepositoryProvider);
   return repository.fetchApis();
 }

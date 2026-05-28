@@ -6,21 +6,57 @@ part of 'root_tab_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(RootTabViewmodel)
+final rootTabViewmodelProvider = RootTabViewmodelProvider._();
+
+final class RootTabViewmodelProvider
+    extends $NotifierProvider<RootTabViewmodel, int> {
+  RootTabViewmodelProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'rootTabViewmodelProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$rootTabViewmodelHash();
+
+  @$internal
+  @override
+  RootTabViewmodel create() => RootTabViewmodel();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(int value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<int>(value),
+    );
+  }
+}
+
 String _$rootTabViewmodelHash() => r'762b5018d66c896e7df86d79b9b1fe49fbc83d96';
 
-/// See also [RootTabViewmodel].
-@ProviderFor(RootTabViewmodel)
-final rootTabViewmodelProvider =
-    AutoDisposeNotifierProvider<RootTabViewmodel, int>.internal(
-      RootTabViewmodel.new,
-      name: r'rootTabViewmodelProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$rootTabViewmodelHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$RootTabViewmodel = AutoDisposeNotifier<int>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$RootTabViewmodel extends $Notifier<int> {
+  int build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<int, int>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<int, int>,
+              int,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}

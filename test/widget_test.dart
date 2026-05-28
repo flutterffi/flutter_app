@@ -107,12 +107,15 @@ void main() {
         child: const FlutterApp(),
       ),
     );
-    await tester.pump(const Duration(milliseconds: 700));
-    await tester.drag(find.byType(ListView).first, const Offset(0, -600));
-    await tester.pump(const Duration(milliseconds: 300));
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
+      find.textContaining('Failed to load mock APIs'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
 
     expect(
-      find.text('Failed to load mock APIs: Mock server failed.'),
+      find.textContaining('Failed to load mock APIs: Mock server failed.'),
       findsOneWidget,
     );
   });

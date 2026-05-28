@@ -6,21 +6,57 @@ part of 'locale_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(LocaleController)
+final localeControllerProvider = LocaleControllerProvider._();
+
+final class LocaleControllerProvider
+    extends $NotifierProvider<LocaleController, Locale?> {
+  LocaleControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'localeControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$localeControllerHash();
+
+  @$internal
+  @override
+  LocaleController create() => LocaleController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Locale? value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<Locale?>(value),
+    );
+  }
+}
+
 String _$localeControllerHash() => r'e588c91899c29d081174230126f098683d269009';
 
-/// See also [LocaleController].
-@ProviderFor(LocaleController)
-final localeControllerProvider =
-    AutoDisposeNotifierProvider<LocaleController, Locale?>.internal(
-      LocaleController.new,
-      name: r'localeControllerProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$localeControllerHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$LocaleController = AutoDisposeNotifier<Locale?>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$LocaleController extends $Notifier<Locale?> {
+  Locale? build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<Locale?, Locale?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<Locale?, Locale?>,
+              Locale?,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}

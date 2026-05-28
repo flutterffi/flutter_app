@@ -6,61 +6,141 @@ part of 'home_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeViewmodelHash() => r'815fb7c7e6b7aeefea9958c4db095b188c0773f3';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [homeViewmodel].
 @ProviderFor(homeViewmodel)
-final homeViewmodelProvider =
-    AutoDisposeProvider<List<HomeHighlightModel>>.internal(
-      homeViewmodel,
-      name: r'homeViewmodelProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$homeViewmodelHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
+final homeViewmodelProvider = HomeViewmodelProvider._();
+
+final class HomeViewmodelProvider
+    extends
+        $FunctionalProvider<
+          List<HomeHighlightModel>,
+          List<HomeHighlightModel>,
+          List<HomeHighlightModel>
+        >
+    with $Provider<List<HomeHighlightModel>> {
+  HomeViewmodelProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'homeViewmodelProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$homeViewmodelHash();
+
+  @$internal
+  @override
+  $ProviderElement<List<HomeHighlightModel>> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  List<HomeHighlightModel> create(Ref ref) {
+    return homeViewmodel(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<HomeHighlightModel> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<List<HomeHighlightModel>>(value),
     );
+  }
+}
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef HomeViewmodelRef = AutoDisposeProviderRef<List<HomeHighlightModel>>;
-String _$homeApiRepositoryHash() => r'9a13ef220e80990394d75823615d1fdc3f2370ba';
+String _$homeViewmodelHash() => r'193860e30e26c223b51d30875be9df843b5fe153';
 
-/// See also [homeApiRepository].
 @ProviderFor(homeApiRepository)
-final homeApiRepositoryProvider =
-    AutoDisposeProvider<HomeApiRepository>.internal(
-      homeApiRepository,
-      name: r'homeApiRepositoryProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$homeApiRepositoryHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
+final homeApiRepositoryProvider = HomeApiRepositoryProvider._();
+
+final class HomeApiRepositoryProvider
+    extends
+        $FunctionalProvider<
+          HomeApiRepository,
+          HomeApiRepository,
+          HomeApiRepository
+        >
+    with $Provider<HomeApiRepository> {
+  HomeApiRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'homeApiRepositoryProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$homeApiRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<HomeApiRepository> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  HomeApiRepository create(Ref ref) {
+    return homeApiRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(HomeApiRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<HomeApiRepository>(value),
     );
+  }
+}
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef HomeApiRepositoryRef = AutoDisposeProviderRef<HomeApiRepository>;
-String _$homeApiListViewmodelHash() =>
-    r'0eb8c8d1f988cd78c71804920a3c9e5439dcb24a';
+String _$homeApiRepositoryHash() => r'5822e39287a40a547987c92868ae1d45caec3ba3';
 
-/// See also [homeApiListViewmodel].
 @ProviderFor(homeApiListViewmodel)
-final homeApiListViewmodelProvider =
-    AutoDisposeFutureProvider<List<HomeApiItemModel>>.internal(
-      homeApiListViewmodel,
-      name: r'homeApiListViewmodelProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$homeApiListViewmodelHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+final homeApiListViewmodelProvider = HomeApiListViewmodelProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef HomeApiListViewmodelRef =
-    AutoDisposeFutureProviderRef<List<HomeApiItemModel>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class HomeApiListViewmodelProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<HomeApiItemModel>>,
+          List<HomeApiItemModel>,
+          FutureOr<List<HomeApiItemModel>>
+        >
+    with
+        $FutureModifier<List<HomeApiItemModel>>,
+        $FutureProvider<List<HomeApiItemModel>> {
+  HomeApiListViewmodelProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'homeApiListViewmodelProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$homeApiListViewmodelHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<List<HomeApiItemModel>> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<List<HomeApiItemModel>> create(Ref ref) {
+    return homeApiListViewmodel(ref);
+  }
+}
+
+String _$homeApiListViewmodelHash() =>
+    r'0845c4a0e8578947061783aa1739a002590700d2';

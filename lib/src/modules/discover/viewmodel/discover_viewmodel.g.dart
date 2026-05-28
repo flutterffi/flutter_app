@@ -6,80 +6,180 @@ part of 'discover_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$discoverRepositoryHash() =>
-    r'f5a1477a748026ff46aa7450a40133f0ba20784e';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [discoverRepository].
 @ProviderFor(discoverRepository)
-final discoverRepositoryProvider =
-    AutoDisposeProvider<DiscoverRepository>.internal(
-      discoverRepository,
-      name: r'discoverRepositoryProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$discoverRepositoryHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
+final discoverRepositoryProvider = DiscoverRepositoryProvider._();
+
+final class DiscoverRepositoryProvider
+    extends
+        $FunctionalProvider<
+          DiscoverRepository,
+          DiscoverRepository,
+          DiscoverRepository
+        >
+    with $Provider<DiscoverRepository> {
+  DiscoverRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'discoverRepositoryProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$discoverRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<DiscoverRepository> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  DiscoverRepository create(Ref ref) {
+    return discoverRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(DiscoverRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<DiscoverRepository>(value),
     );
+  }
+}
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef DiscoverRepositoryRef = AutoDisposeProviderRef<DiscoverRepository>;
-String _$discoverEndpointPathHash() =>
-    r'287d4b563e7c1dd1ef869959fa01a29c8a8c0603';
+String _$discoverRepositoryHash() =>
+    r'32928b973f3e3d60bfcb889b0ed40e23c1481325';
 
-/// See also [discoverEndpointPath].
 @ProviderFor(discoverEndpointPath)
-final discoverEndpointPathProvider = AutoDisposeProvider<String>.internal(
-  discoverEndpointPath,
-  name: r'discoverEndpointPathProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$discoverEndpointPathHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+final discoverEndpointPathProvider = DiscoverEndpointPathProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef DiscoverEndpointPathRef = AutoDisposeProviderRef<String>;
-String _$discoverSourceLabelHash() =>
-    r'c9f54088fd35cdcfad6d3a29db1fa3df1bd14b27';
+final class DiscoverEndpointPathProvider
+    extends $FunctionalProvider<String, String, String>
+    with $Provider<String> {
+  DiscoverEndpointPathProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'discoverEndpointPathProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
-/// See also [discoverSourceLabel].
+  @override
+  String debugGetCreateSourceHash() => _$discoverEndpointPathHash();
+
+  @$internal
+  @override
+  $ProviderElement<String> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  String create(Ref ref) {
+    return discoverEndpointPath(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String>(value),
+    );
+  }
+}
+
+String _$discoverEndpointPathHash() =>
+    r'5bbf8de1dfc952f745b11abe93cc5f90d164d17a';
+
 @ProviderFor(discoverSourceLabel)
-final discoverSourceLabelProvider = AutoDisposeProvider<String>.internal(
-  discoverSourceLabel,
-  name: r'discoverSourceLabelProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$discoverSourceLabelHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+final discoverSourceLabelProvider = DiscoverSourceLabelProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef DiscoverSourceLabelRef = AutoDisposeProviderRef<String>;
-String _$discoverFeaturedArticleViewmodelHash() =>
-    r'3c2dd5a509f964b4516a1cd5fc8ec2669235a7de';
+final class DiscoverSourceLabelProvider
+    extends $FunctionalProvider<String, String, String>
+    with $Provider<String> {
+  DiscoverSourceLabelProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'discoverSourceLabelProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
-/// See also [discoverFeaturedArticleViewmodel].
+  @override
+  String debugGetCreateSourceHash() => _$discoverSourceLabelHash();
+
+  @$internal
+  @override
+  $ProviderElement<String> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  String create(Ref ref) {
+    return discoverSourceLabel(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String>(value),
+    );
+  }
+}
+
+String _$discoverSourceLabelHash() =>
+    r'f4539da2346fba14c7cea4d18784b4210c70cc55';
+
 @ProviderFor(discoverFeaturedArticleViewmodel)
 final discoverFeaturedArticleViewmodelProvider =
-    AutoDisposeFutureProvider<DiscoverArticleModel>.internal(
-      discoverFeaturedArticleViewmodel,
-      name: r'discoverFeaturedArticleViewmodelProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$discoverFeaturedArticleViewmodelHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+    DiscoverFeaturedArticleViewmodelProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef DiscoverFeaturedArticleViewmodelRef =
-    AutoDisposeFutureProviderRef<DiscoverArticleModel>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class DiscoverFeaturedArticleViewmodelProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<DiscoverArticleModel>,
+          DiscoverArticleModel,
+          FutureOr<DiscoverArticleModel>
+        >
+    with
+        $FutureModifier<DiscoverArticleModel>,
+        $FutureProvider<DiscoverArticleModel> {
+  DiscoverFeaturedArticleViewmodelProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'discoverFeaturedArticleViewmodelProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$discoverFeaturedArticleViewmodelHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<DiscoverArticleModel> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<DiscoverArticleModel> create(Ref ref) {
+    return discoverFeaturedArticleViewmodel(ref);
+  }
+}
+
+String _$discoverFeaturedArticleViewmodelHash() =>
+    r'17ed53c94e703e20ed2a80897979956d03a041f5';

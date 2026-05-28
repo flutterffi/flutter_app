@@ -6,24 +6,53 @@ part of 'notifications_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$notificationsViewmodelHash() =>
-    r'7793953a0b390886602096a954b84169aa18d4b4';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [notificationsViewmodel].
 @ProviderFor(notificationsViewmodel)
-final notificationsViewmodelProvider =
-    AutoDisposeProvider<NotificationsModel>.internal(
-      notificationsViewmodel,
-      name: r'notificationsViewmodelProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$notificationsViewmodelHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+final notificationsViewmodelProvider = NotificationsViewmodelProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef NotificationsViewmodelRef = AutoDisposeProviderRef<NotificationsModel>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class NotificationsViewmodelProvider
+    extends
+        $FunctionalProvider<
+          NotificationsModel,
+          NotificationsModel,
+          NotificationsModel
+        >
+    with $Provider<NotificationsModel> {
+  NotificationsViewmodelProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'notificationsViewmodelProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$notificationsViewmodelHash();
+
+  @$internal
+  @override
+  $ProviderElement<NotificationsModel> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  NotificationsModel create(Ref ref) {
+    return notificationsViewmodel(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(NotificationsModel value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<NotificationsModel>(value),
+    );
+  }
+}
+
+String _$notificationsViewmodelHash() =>
+    r'97b81ff91e5a99e14fcff915b6af60902485bb01';

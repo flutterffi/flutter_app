@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_app/l10n/app_localizations.dart';
+import 'package:flutter_app/gen/assets.gen.dart';
+import 'package:flutter_app/gen/colors.gen.dart';
 import 'package:flutter_app/src/modules/home/model/home_app_config_model.dart';
 import 'package:flutter_app/src/modules/home/model/home_api_item_model.dart';
 import 'package:flutter_app/src/modules/home/model/home_highlight_model.dart';
@@ -54,7 +56,30 @@ class HomeContentView extends StatelessWidget {
         children: [
           FeatureSectionCardView(
             title: l10n.architectureTitle,
-            child: Text(l10n.architectureDescription),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Assets.branding.appIcon.image(
+                      width: 42,
+                      height: 42,
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(child: Text(l10n.architectureDescription)),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(18),
+                  child: Assets.images.illustrations.homeHero.image(
+                    height: 132,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: 16),
           FeatureSectionCardView(
@@ -149,8 +174,8 @@ class _HomeApiCard extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     color: api.method == 'POST'
-                        ? const Color(0xFFD97706).withValues(alpha: 0.14)
-                        : const Color(0xFF0F766E).withValues(alpha: 0.14),
+                        ? ColorName.brandAccent.withValues(alpha: 0.14)
+                        : ColorName.brandPrimary.withValues(alpha: 0.14),
                     borderRadius: BorderRadius.circular(999),
                   ),
                   child: Text(

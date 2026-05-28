@@ -5,7 +5,7 @@ import 'package:flutter_app/src/modules/notifications/model/notifications_model.
 part 'notifications_viewmodel.g.dart';
 
 @riverpod
-NotificationsModel notificationsViewmodel(NotificationsViewmodelRef ref) {
+NotificationsModel notificationsViewmodel(Ref ref) {
   return const NotificationsModel(
     title: 'Notifications',
     subtitle: 'Alert center, inbox, and message actions can live in this module.',

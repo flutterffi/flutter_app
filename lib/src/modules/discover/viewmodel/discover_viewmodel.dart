@@ -7,26 +7,26 @@ import 'package:flutter_app/src/modules/discover/model/discover_article_model.da
 part 'discover_viewmodel.g.dart';
 
 @riverpod
-DiscoverRepository discoverRepository(DiscoverRepositoryRef ref) {
+DiscoverRepository discoverRepository(Ref ref) {
   final apiClient = ref.watch(apiClientProvider);
   return DiscoverRepository(apiClient: apiClient);
 }
 
 @riverpod
-String discoverEndpointPath(DiscoverEndpointPathRef ref) {
+String discoverEndpointPath(Ref ref) {
   final config = ref.watch(networkConfigProvider);
   return config.useMockClient ? '/posts/1' : '/posts/1';
 }
 
 @riverpod
-String discoverSourceLabel(DiscoverSourceLabelRef ref) {
+String discoverSourceLabel(Ref ref) {
   final config = ref.watch(networkConfigProvider);
   return config.useMockClient ? 'Mock client' : config.baseUrl;
 }
 
 @riverpod
 Future<DiscoverArticleModel> discoverFeaturedArticleViewmodel(
-  DiscoverFeaturedArticleViewmodelRef ref,
+  Ref ref,
 ) {
   final repository = ref.watch(discoverRepositoryProvider);
   final endpointPath = ref.watch(discoverEndpointPathProvider);

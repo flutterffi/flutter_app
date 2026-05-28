@@ -3,6 +3,23 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_app/src/app/app.dart';
+import 'package:flutter_app/src/core/network/model/api_request_model.dart';
+import 'package:flutter_app/src/core/network/model/api_response_model.dart';
+import 'package:flutter_app/src/core/network/service/api_client.dart';
+import 'package:flutter_app/src/core/network/viewmodel/api_client_viewmodel.dart';
+
+class _FailingApiClient implements ApiClient {
+  @override
+  Future<ApiResponseModel<Map<String, dynamic>>> send(
+    ApiRequestModel request,
+  ) async {
+    return const ApiResponseModel(
+      statusCode: 500,
+      data: <String, dynamic>{'items': <Map<String, dynamic>>[]},
+      message: 'Mock server failed.',
+    );
+  }
+}
 
 void main() {
   testWidgets('renders five-tab MVVM shell', (tester) async {
@@ -67,5 +84,24 @@ void main() {
 
     expect(find.text('Welcome back, demo@example.com'), findsOneWidget);
     expect(find.text('Log out'), findsOneWidget);
+  });
+
+  testWidgets('home shows unified API error message', (tester) async {
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          apiClientProvider.overrideWithValue(_FailingApiClient()),
+        ],
+        child: const FlutterApp(),
+      ),
+    );
+    await tester.pump(const Duration(milliseconds: 700));
+    await tester.drag(find.byType(ListView).first, const Offset(0, -600));
+    await tester.pump(const Duration(milliseconds: 300));
+
+    expect(
+      find.text('Failed to load mock APIs: Mock server failed.'),
+      findsOneWidget,
+    );
   });
 }

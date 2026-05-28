@@ -14,11 +14,18 @@ import 'package:flutter/widgets.dart';
 class $AssetsBrandingGen {
   const $AssetsBrandingGen();
 
+  /// File path: assets/branding/README.md
+  String get readme => 'assets/branding/README.md';
+
   /// File path: assets/branding/app_icon.png
   AssetGenImage get appIcon => const AssetGenImage('assets/branding/app_icon.png');
 
+  /// File path: assets/branding/app_icon_foreground.png
+  AssetGenImage get appIconForeground =>
+      const AssetGenImage('assets/branding/app_icon_foreground.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [appIcon];
+  List<dynamic> get values => [readme, appIcon, appIconForeground];
 }
 
 class $AssetsConfigGen {

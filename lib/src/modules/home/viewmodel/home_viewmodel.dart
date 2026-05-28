@@ -1,5 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import 'package:flutter_app/src/modules/home/data/home_api_repository.dart';
+import 'package:flutter_app/src/modules/home/model/home_api_item_model.dart';
 import 'package:flutter_app/src/modules/home/model/home_highlight_model.dart';
 
 part 'home_viewmodel.g.dart';
@@ -20,4 +22,17 @@ List<HomeHighlightModel> homeViewmodel(HomeViewmodelRef ref) {
       description: 'Tabs, routing, assets, and localization are wired already.',
     ),
   ];
+}
+
+@riverpod
+HomeApiRepository homeApiRepository(HomeApiRepositoryRef ref) {
+  return HomeApiRepository();
+}
+
+@riverpod
+Future<List<HomeApiItemModel>> homeApiListViewmodel(
+  HomeApiListViewmodelRef ref,
+) {
+  final repository = ref.watch(homeApiRepositoryProvider);
+  return repository.fetchApis();
 }

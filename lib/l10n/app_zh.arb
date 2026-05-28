@@ -30,6 +30,14 @@
     }
   },
   "homeTitle": "Flutter 架构模板",
+  "homeRefreshApis": "刷新接口",
+  "homeMockApisTitle": "测试接口列表",
+  "homeMockApisFailed": "测试接口加载失败：{message}",
+  "@homeMockApisFailed": {
+    "placeholders": {
+      "message": {}
+    }
+  },
   "architectureTitle": "推荐架构",
   "architectureDescription": "项目按 app、core、shared、modules 分层，每个模块继续拆分 model、viewmodel、view、page，形成清晰的 MVVM 架构。",
   "stackTitle": "已接入能力",

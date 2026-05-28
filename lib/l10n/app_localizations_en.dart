@@ -58,6 +58,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeTitle => 'Flutter Starter';
 
   @override
+  String get homeRefreshApis => 'Refresh APIs';
+
+  @override
+  String get homeMockApisTitle => 'Mock API endpoints';
+
+  @override
+  String homeMockApisFailed(Object message) {
+    return 'Failed to load mock APIs: $message';
+  }
+
+  @override
   String get architectureTitle => 'Recommended architecture';
 
   @override

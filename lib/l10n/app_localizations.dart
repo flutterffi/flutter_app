@@ -188,6 +188,24 @@ abstract class AppLocalizations {
   /// **'Flutter Starter'**
   String get homeTitle;
 
+  /// No description provided for @homeRefreshApis.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh APIs'**
+  String get homeRefreshApis;
+
+  /// No description provided for @homeMockApisTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mock API endpoints'**
+  String get homeMockApisTitle;
+
+  /// No description provided for @homeMockApisFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load mock APIs: {message}'**
+  String homeMockApisFailed(Object message);
+
   /// No description provided for @architectureTitle.
   ///
   /// In en, this message translates to:

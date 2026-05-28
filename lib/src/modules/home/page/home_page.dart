@@ -12,13 +12,18 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final highlights = ref.watch(homeViewmodelProvider);
+    final apiList = ref.watch(homeApiListViewmodelProvider);
     final config = ref.watch(appConfigViewmodelProvider);
 
     return HomeContentView(
       highlights: highlights,
+      apiListAsync: apiList,
       configAsync: config,
       onSwitchLocale: (code) {
         ref.read(localeControllerProvider.notifier).switchLocale(code);
+      },
+      onRefreshApis: () {
+        ref.invalidate(homeApiListViewmodelProvider);
       },
     );
   }

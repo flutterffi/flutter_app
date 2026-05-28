@@ -58,6 +58,17 @@ class AppLocalizationsZh extends AppLocalizations {
   String get homeTitle => 'Flutter 架构模板';
 
   @override
+  String get homeRefreshApis => '刷新接口';
+
+  @override
+  String get homeMockApisTitle => '测试接口列表';
+
+  @override
+  String homeMockApisFailed(Object message) {
+    return '测试接口加载失败：$message';
+  }
+
+  @override
   String get architectureTitle => '推荐架构';
 
   @override

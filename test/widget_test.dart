@@ -7,13 +7,19 @@ import 'package:flutter_app/src/app/app.dart';
 void main() {
   testWidgets('renders five-tab MVVM shell', (tester) async {
     await tester.pumpWidget(const ProviderScope(child: FlutterApp()));
-    await tester.pumpAndSettle();
+    await tester.pump(const Duration(milliseconds: 700));
 
     expect(find.text('Home'), findsOneWidget);
     expect(find.text('Discover'), findsOneWidget);
     expect(find.text('Workspace'), findsOneWidget);
     expect(find.text('Notifications'), findsOneWidget);
     expect(find.text('Profile'), findsOneWidget);
+
+    await tester.drag(find.byType(ListView).first, const Offset(0, -600));
+    await tester.pump(const Duration(milliseconds: 300));
+
+    expect(find.text('Mock API endpoints'), findsOneWidget);
+    expect(find.text('/mock/banners'), findsOneWidget);
   });
 
   testWidgets('workspace task board updates progress', (tester) async {

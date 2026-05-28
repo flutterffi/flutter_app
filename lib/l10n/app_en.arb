@@ -30,6 +30,14 @@
     }
   },
   "homeTitle": "Flutter Starter",
+  "homeRefreshApis": "Refresh APIs",
+  "homeMockApisTitle": "Mock API endpoints",
+  "homeMockApisFailed": "Failed to load mock APIs: {message}",
+  "@homeMockApisFailed": {
+    "placeholders": {
+      "message": {}
+    }
+  },
   "architectureTitle": "Recommended architecture",
   "architectureDescription": "The project is split into app, core, shared, and modules. Each module follows model, viewmodel, view, and page folders for a clear MVVM structure.",
   "stackTitle": "Enabled stack",

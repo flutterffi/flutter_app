@@ -40,7 +40,7 @@ final class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: AppRadius.mediumValue,
-          borderSide: const BorderSide(color: AppColors.primary),
+          borderSide: BorderSide(color: AppColors.primary),
         ),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,

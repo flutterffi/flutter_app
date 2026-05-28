@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_app/l10n/app_localizations.dart';
+import 'package:flutter_app/src/core/constants/app_spacing.dart';
 import 'package:flutter_app/src/modules/profile/model/profile_model.dart';
 import 'package:flutter_app/src/shared/view/feature_section_card_view.dart';
+import 'package:flutter_app/src/shared/widgets/app_button.dart';
+import 'package:flutter_app/src/shared/widgets/app_error_view.dart';
+import 'package:flutter_app/src/shared/widgets/app_text_field.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({
@@ -37,58 +41,50 @@ class ProfileView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(model.subtitle),
-                const SizedBox(height: 16),
+                const SizedBox(height: AppSpacing.md),
                 if (model.isLoggedIn) ...[
                   Text(
                     l10n.profileWelcome(model.email),
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
-                  const SizedBox(height: 16),
-                  FilledButton.tonal(
+                  const SizedBox(height: AppSpacing.md),
+                  AppButton(
+                    isTonal: true,
                     onPressed: onLogout,
-                    child: Text(l10n.profileLogout),
+                    label: l10n.profileLogout,
                   ),
                 ] else ...[
-                  TextField(
-                    key: const Key('profile_email_field'),
+                  AppTextField(
+                    fieldKey: const Key('profile_email_field'),
                     keyboardType: TextInputType.emailAddress,
                     onChanged: onEmailChanged,
-                    decoration: InputDecoration(
-                      labelText: l10n.profileEmailLabel,
-                      hintText: 'name@example.com',
-                    ),
+                    label: l10n.profileEmailLabel,
+                    hintText: 'name@example.com',
                   ),
-                  const SizedBox(height: 12),
-                  TextField(
-                    key: const Key('profile_password_field'),
+                  const SizedBox(height: AppSpacing.sm),
+                  AppTextField(
+                    fieldKey: const Key('profile_password_field'),
                     obscureText: !model.isPasswordVisible,
                     onChanged: onPasswordChanged,
-                    decoration: InputDecoration(
-                      labelText: l10n.profilePasswordLabel,
-                      suffixIcon: IconButton(
-                        onPressed: onTogglePasswordVisibility,
-                        icon: Icon(
-                          model.isPasswordVisible
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                        ),
+                    label: l10n.profilePasswordLabel,
+                    suffixIcon: IconButton(
+                      onPressed: onTogglePasswordVisibility,
+                      icon: Icon(
+                        model.isPasswordVisible
+                            ? Icons.visibility_off
+                            : Icons.visibility,
                       ),
                     ),
                   ),
                   if (model.errorMessage case final message?) ...[
-                    const SizedBox(height: 12),
-                    Text(
-                      message,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.error,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    const SizedBox(height: AppSpacing.sm),
+                    AppErrorView(message: message),
                   ],
-                  const SizedBox(height: 16),
-                  FilledButton(
+                  const SizedBox(height: AppSpacing.md),
+                  AppButton(
+                    isExpanded: true,
                     onPressed: onSubmit,
-                    child: Text(l10n.profileLogin),
+                    label: l10n.profileLogin,
                   ),
                 ],
               ],

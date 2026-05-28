@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_app/src/core/constants/app_spacing.dart';
+import 'package:flutter_app/src/shared/widgets/app_empty_view.dart';
+
 class ModulePlaceholderView extends StatelessWidget {
   const ModulePlaceholderView({
     required this.title,
@@ -17,38 +20,12 @@ class ModulePlaceholderView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                accentColor.withValues(alpha: 0.18),
-                accentColor.withValues(alpha: 0.04),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-            borderRadius: BorderRadius.circular(28),
-          ),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(28),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.widgets_outlined, size: 52, color: accentColor),
-                  const SizedBox(height: 16),
-                  Text(title, style: Theme.of(context).textTheme.headlineSmall),
-                  const SizedBox(height: 8),
-                  Text(
-                    subtitle,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                ],
-              ),
-            ),
-          ),
+        padding: const EdgeInsets.all(AppSpacing.lg),
+        child: AppEmptyView(
+          title: title,
+          subtitle: subtitle,
+          accentColor: accentColor,
+          icon: Icons.widgets_outlined,
         ),
       ),
     );

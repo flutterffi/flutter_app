@@ -12,6 +12,8 @@ import 'package:flutter_app/src/modules/home/model/home_app_config_model.dart';
 import 'package:flutter_app/src/modules/home/model/home_api_item_model.dart';
 import 'package:flutter_app/src/modules/home/model/home_highlight_model.dart';
 import 'package:flutter_app/src/shared/view/feature_section_card_view.dart';
+import 'package:flutter_app/src/shared/widgets/app_error_view.dart';
+import 'package:flutter_app/src/shared/widgets/app_loading_view.dart';
 
 class HomeContentView extends StatelessWidget {
   const HomeContentView({
@@ -119,9 +121,11 @@ class HomeContentView extends StatelessWidget {
                       Text(l10n.homeMockApisDescription),
                       const SizedBox(height: AppSpacing.md),
                       apiListAsync.when(
-                        loading: () => const LinearProgressIndicator(),
-                        error: (error, stackTrace) =>
-                            Text(l10n.homeMockApisFailed(error.toString())),
+                        loading: () => const AppLoadingView(),
+                        error: (error, stackTrace) => AppErrorView(
+                          message: l10n.homeMockApisFailed(error.toString()),
+                          onRetry: onRefreshApis,
+                        ),
                         data: (apis) => Column(
                           children: [
                             for (final api in apis) ...[
@@ -139,9 +143,10 @@ class HomeContentView extends StatelessWidget {
                 FeatureSectionCardView(
                   title: l10n.configTitle,
                   child: configAsync.when(
-                    loading: () => const LinearProgressIndicator(),
-                    error: (error, stackTrace) =>
-                        Text(l10n.configLoadFailed(error.toString())),
+                    loading: () => const AppLoadingView(),
+                    error: (error, stackTrace) => AppErrorView(
+                      message: l10n.configLoadFailed(error.toString()),
+                    ),
                     data: (config) => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

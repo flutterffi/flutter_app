@@ -1,6 +1,6 @@
 final class AppDesign {
   const AppDesign._();
 
-  static const double width = 390;
-  static const double height = 844;
+  static const double width = 375;
+  static const double height = 812;
 }

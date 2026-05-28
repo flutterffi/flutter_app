@@ -1,7 +1,9 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:flutter_app/src/core/network/viewmodel/api_client_viewmodel.dart';
+import 'package:flutter_app/src/modules/home/data/home_app_config_repository.dart';
 import 'package:flutter_app/src/modules/home/data/home_api_repository.dart';
+import 'package:flutter_app/src/modules/home/model/home_app_config_model.dart';
 import 'package:flutter_app/src/modules/home/model/home_api_item_model.dart';
 import 'package:flutter_app/src/modules/home/model/home_highlight_model.dart';
 
@@ -24,6 +26,15 @@ List<HomeHighlightModel> homeViewmodel(HomeViewmodelRef ref) {
     ),
   ];
 }
+
+final homeAppConfigRepositoryProvider = Provider<HomeAppConfigRepository>(
+  (ref) => HomeAppConfigRepository(),
+);
+
+final homeAppConfigProvider = FutureProvider<HomeAppConfigModel>((ref) {
+  final repository = ref.watch(homeAppConfigRepositoryProvider);
+  return repository.load();
+});
 
 @riverpod
 HomeApiRepository homeApiRepository(HomeApiRepositoryRef ref) {

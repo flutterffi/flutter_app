@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_app/l10n/app_localizations.dart';
+import 'package:flutter_app/src/modules/home/model/home_app_config_model.dart';
 import 'package:flutter_app/src/modules/home/model/home_api_item_model.dart';
 import 'package:flutter_app/src/modules/home/model/home_highlight_model.dart';
-import 'package:flutter_app/src/shared/model/app_config_model.dart';
 import 'package:flutter_app/src/shared/view/feature_section_card_view.dart';
 
 class HomeContentView extends StatelessWidget {
@@ -19,7 +19,7 @@ class HomeContentView extends StatelessWidget {
 
   final List<HomeHighlightModel> highlights;
   final AsyncValue<List<HomeApiItemModel>> apiListAsync;
-  final AsyncValue<AppConfigModel> configAsync;
+  final AsyncValue<HomeAppConfigModel> configAsync;
   final ValueChanged<String> onSwitchLocale;
   final VoidCallback onRefreshApis;
 

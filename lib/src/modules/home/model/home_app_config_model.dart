@@ -1,12 +1,12 @@
-class AppConfigModel {
-  const AppConfigModel({
+class HomeAppConfigModel {
+  const HomeAppConfigModel({
     required this.appName,
     required this.environment,
     required this.enabledModules,
   });
 
-  factory AppConfigModel.fromJson(Map<String, dynamic> json) {
-    return AppConfigModel(
+  factory HomeAppConfigModel.fromJson(Map<String, dynamic> json) {
+    return HomeAppConfigModel(
       appName: json['appName'] as String? ?? '',
       environment: json['environment'] as String? ?? '',
       enabledModules: (json['enabledModules'] as List<dynamic>? ?? const [])
@@ -18,12 +18,4 @@ class AppConfigModel {
   final String appName;
   final String environment;
   final List<String> enabledModules;
-
-  Map<String, dynamic> toJson() {
-    return {
-      'appName': appName,
-      'environment': environment,
-      'enabledModules': enabledModules,
-    };
-  }
 }

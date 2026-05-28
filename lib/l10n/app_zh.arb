@@ -5,6 +5,17 @@
   "tabWorkspace": "工作台",
   "tabNotifications": "消息",
   "tabProfile": "我的",
+  "profileTitle": "我的",
+  "profileEmailLabel": "邮箱",
+  "profilePasswordLabel": "密码",
+  "profileLogin": "登录",
+  "profileLogout": "退出登录",
+  "profileWelcome": "欢迎回来，{email}",
+  "@profileWelcome": {
+    "placeholders": {
+      "email": {}
+    }
+  },
   "workspaceTitle": "工作台",
   "workspaceTaskBoardTitle": "任务看板",
   "workspaceProgress": "已完成 {completed}/{total} 个任务",

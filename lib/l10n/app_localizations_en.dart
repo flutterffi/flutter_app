@@ -24,6 +24,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tabProfile => 'Profile';
 
   @override
+  String get profileTitle => 'Profile';
+
+  @override
+  String get profileEmailLabel => 'Email';
+
+  @override
+  String get profilePasswordLabel => 'Password';
+
+  @override
+  String get profileLogin => 'Log in';
+
+  @override
+  String get profileLogout => 'Log out';
+
+  @override
+  String profileWelcome(Object email) {
+    return 'Welcome back, $email';
+  }
+
+  @override
   String get workspaceTitle => 'Workspace';
 
   @override

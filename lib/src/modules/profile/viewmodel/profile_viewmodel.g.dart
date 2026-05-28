@@ -6,22 +6,21 @@ part of 'profile_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileViewmodelHash() => r'8f460627ff64ed32496729d5db120ac4ad9e0e1a';
+String _$profileViewmodelHash() => r'fc53352a50bba8af377031e0f9daa84a8bf468c0';
 
-/// See also [profileViewmodel].
-@ProviderFor(profileViewmodel)
-final profileViewmodelProvider = AutoDisposeProvider<ProfileModel>.internal(
-  profileViewmodel,
-  name: r'profileViewmodelProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$profileViewmodelHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+/// See also [ProfileViewmodel].
+@ProviderFor(ProfileViewmodel)
+final profileViewmodelProvider =
+    AutoDisposeNotifierProvider<ProfileViewmodel, ProfileModel>.internal(
+      ProfileViewmodel.new,
+      name: r'profileViewmodelProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$profileViewmodelHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef ProfileViewmodelRef = AutoDisposeProviderRef<ProfileModel>;
+typedef _$ProfileViewmodel = AutoDisposeNotifier<ProfileModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

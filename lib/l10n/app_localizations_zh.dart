@@ -24,6 +24,26 @@ class AppLocalizationsZh extends AppLocalizations {
   String get tabProfile => '我的';
 
   @override
+  String get profileTitle => '我的';
+
+  @override
+  String get profileEmailLabel => '邮箱';
+
+  @override
+  String get profilePasswordLabel => '密码';
+
+  @override
+  String get profileLogin => '登录';
+
+  @override
+  String get profileLogout => '退出登录';
+
+  @override
+  String profileWelcome(Object email) {
+    return '欢迎回来，$email';
+  }
+
+  @override
   String get workspaceTitle => '工作台';
 
   @override

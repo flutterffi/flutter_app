@@ -5,6 +5,17 @@
   "tabWorkspace": "Workspace",
   "tabNotifications": "Notifications",
   "tabProfile": "Profile",
+  "profileTitle": "Profile",
+  "profileEmailLabel": "Email",
+  "profilePasswordLabel": "Password",
+  "profileLogin": "Log in",
+  "profileLogout": "Log out",
+  "profileWelcome": "Welcome back, {email}",
+  "@profileWelcome": {
+    "placeholders": {
+      "email": {}
+    }
+  },
   "workspaceTitle": "Workspace",
   "workspaceTaskBoardTitle": "Task board",
   "workspaceProgress": "{completed} of {total} tasks completed",

@@ -128,6 +128,42 @@ abstract class AppLocalizations {
   /// **'Profile'**
   String get tabProfile;
 
+  /// No description provided for @profileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileTitle;
+
+  /// No description provided for @profileEmailLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get profileEmailLabel;
+
+  /// No description provided for @profilePasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get profilePasswordLabel;
+
+  /// No description provided for @profileLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in'**
+  String get profileLogin;
+
+  /// No description provided for @profileLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Log out'**
+  String get profileLogout;
+
+  /// No description provided for @profileWelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back, {email}'**
+  String profileWelcome(Object email);
+
   /// No description provided for @workspaceTitle.
   ///
   /// In en, this message translates to:

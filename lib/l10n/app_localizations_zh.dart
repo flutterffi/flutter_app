@@ -76,6 +76,17 @@ class AppLocalizationsZh extends AppLocalizations {
   String get architectureTitle => '推荐架构';
 
   @override
+  String get discoverTitle => '发现';
+
+  @override
+  String get discoverFeaturedTitle => '特色文章接口示例';
+
+  @override
+  String discoverLoadFailed(Object message) {
+    return '文章加载失败：$message';
+  }
+
+  @override
   String get architectureDescription =>
       '项目按 app、core、shared、modules 分层，每个模块继续拆分 model、viewmodel、view、page，形成清晰的 MVVM 架构。';
 

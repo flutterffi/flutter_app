@@ -48,6 +48,17 @@ class MockApiClient implements ApiClient {
           },
           message: 'Mock API list loaded.',
         );
+      case 'GET /posts/1':
+        return const ApiResponseModel(
+          statusCode: 200,
+          data: {
+            'id': 1,
+            'title': 'Mock featured article',
+            'body':
+                'This payload follows the same shape as the JSONPlaceholder /posts/1 response, so switching to the real endpoint only requires flipping the network config.',
+          },
+          message: 'Mock featured article loaded.',
+        );
       default:
         return ApiResponseModel(
           statusCode: 404,

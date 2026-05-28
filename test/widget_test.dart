@@ -55,6 +55,18 @@ void main() {
     expect(find.text('3 of 4 tasks completed'), findsOneWidget);
   });
 
+  testWidgets('discover renders featured article example', (tester) async {
+    await tester.pumpWidget(const ProviderScope(child: FlutterApp()));
+    await tester.pump(const Duration(milliseconds: 700));
+
+    await tester.tap(find.text('Discover'));
+    await tester.pump(const Duration(milliseconds: 700));
+
+    expect(find.text('Featured article API example'), findsOneWidget);
+    expect(find.text('Mock featured article'), findsOneWidget);
+    expect(find.text('/posts/1'), findsOneWidget);
+  });
+
   testWidgets('profile login flow validates and succeeds', (tester) async {
     await tester.pumpWidget(const ProviderScope(child: FlutterApp()));
     await tester.pump(const Duration(milliseconds: 300));

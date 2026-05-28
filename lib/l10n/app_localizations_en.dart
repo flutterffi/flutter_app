@@ -76,6 +76,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get architectureTitle => 'Recommended architecture';
 
   @override
+  String get discoverTitle => 'Discover';
+
+  @override
+  String get discoverFeaturedTitle => 'Featured article API example';
+
+  @override
+  String discoverLoadFailed(Object message) {
+    return 'Failed to load article: $message';
+  }
+
+  @override
   String get architectureDescription =>
       'The project is split into app, core, shared, and modules. Each module follows model, viewmodel, view, and page folders for a clear MVVM structure.';
 

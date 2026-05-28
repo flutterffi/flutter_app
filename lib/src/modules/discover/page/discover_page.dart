@@ -9,7 +9,13 @@ class DiscoverPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final model = ref.watch(discoverViewmodelProvider);
-    return DiscoverView(model: model);
+    final article = ref.watch(discoverFeaturedArticleViewmodelProvider);
+
+    return DiscoverView(
+      articleAsync: article,
+      onRefresh: () {
+        ref.invalidate(discoverFeaturedArticleViewmodelProvider);
+      },
+    );
   }
 }

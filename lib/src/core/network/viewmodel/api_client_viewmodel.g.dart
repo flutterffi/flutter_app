@@ -6,7 +6,7 @@ part of 'api_client_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$networkConfigHash() => r'5f2c0666f9a86961665f0f7f7b6049899d6bcb7f';
+String _$networkConfigHash() => r'e1e2a1d9a372d0c9553dbe706799a49487a031e3';
 
 /// See also [networkConfig].
 @ProviderFor(networkConfig)

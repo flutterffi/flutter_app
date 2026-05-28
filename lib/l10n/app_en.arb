@@ -40,6 +40,14 @@
     }
   },
   "architectureTitle": "Recommended architecture",
+  "discoverTitle": "Discover",
+  "discoverFeaturedTitle": "Featured article API example",
+  "discoverLoadFailed": "Failed to load article: {message}",
+  "@discoverLoadFailed": {
+    "placeholders": {
+      "message": {}
+    }
+  },
   "architectureDescription": "The project is split into app, core, shared, and modules. Each module follows model, viewmodel, view, and page folders for a clear MVVM structure.",
   "stackTitle": "Enabled stack",
   "configTitle": "Generated configuration",

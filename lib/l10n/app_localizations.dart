@@ -218,6 +218,24 @@ abstract class AppLocalizations {
   /// **'Recommended architecture'**
   String get architectureTitle;
 
+  /// No description provided for @discoverTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover'**
+  String get discoverTitle;
+
+  /// No description provided for @discoverFeaturedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured article API example'**
+  String get discoverFeaturedTitle;
+
+  /// No description provided for @discoverLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load article: {message}'**
+  String discoverLoadFailed(Object message);
+
   /// No description provided for @architectureDescription.
   ///
   /// In en, this message translates to:

@@ -40,6 +40,14 @@
     }
   },
   "architectureTitle": "推荐架构",
+  "discoverTitle": "发现",
+  "discoverFeaturedTitle": "特色文章接口示例",
+  "discoverLoadFailed": "文章加载失败：{message}",
+  "@discoverLoadFailed": {
+    "placeholders": {
+      "message": {}
+    }
+  },
   "architectureDescription": "项目按 app、core、shared、modules 分层，每个模块继续拆分 model、viewmodel、view、page，形成清晰的 MVVM 架构。",
   "stackTitle": "已接入能力",
   "configTitle": "自动生成配置",

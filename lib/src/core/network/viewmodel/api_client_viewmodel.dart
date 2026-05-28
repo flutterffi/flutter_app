@@ -11,7 +11,7 @@ part 'api_client_viewmodel.g.dart';
 @riverpod
 NetworkConfig networkConfig(NetworkConfigRef ref) {
   return const NetworkConfig(
-    baseUrl: 'https://example.com',
+    baseUrl: 'https://jsonplaceholder.typicode.com',
     useMockClient: true,
   );
 }

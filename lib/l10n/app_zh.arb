@@ -5,6 +5,19 @@
   "tabWorkspace": "工作台",
   "tabNotifications": "消息",
   "tabProfile": "我的",
+  "workspaceTitle": "工作台",
+  "workspaceTaskBoardTitle": "任务看板",
+  "workspaceProgress": "已完成 {completed}/{total} 个任务",
+  "@workspaceProgress": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "homeTitle": "Flutter 架构模板",
   "architectureTitle": "推荐架构",
   "architectureDescription": "项目按 app、core、shared、modules 分层，每个模块继续拆分 model、viewmodel、view、page，形成清晰的 MVVM 架构。",

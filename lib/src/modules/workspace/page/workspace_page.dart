@@ -10,6 +10,12 @@ class WorkspacePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final model = ref.watch(workspaceViewmodelProvider);
-    return WorkspaceView(model: model);
+
+    return WorkspaceView(
+      model: model,
+      onToggleTask: (taskId) {
+        ref.read(workspaceViewmodelProvider.notifier).toggleTask(taskId);
+      },
+    );
   }
 }

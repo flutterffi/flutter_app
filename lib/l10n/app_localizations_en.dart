@@ -24,6 +24,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tabProfile => 'Profile';
 
   @override
+  String get workspaceTitle => 'Workspace';
+
+  @override
+  String get workspaceTaskBoardTitle => 'Task board';
+
+  @override
+  String workspaceProgress(int completed, int total) {
+    return '$completed of $total tasks completed';
+  }
+
+  @override
   String get homeTitle => 'Flutter Starter';
 
   @override

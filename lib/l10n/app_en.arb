@@ -5,6 +5,19 @@
   "tabWorkspace": "Workspace",
   "tabNotifications": "Notifications",
   "tabProfile": "Profile",
+  "workspaceTitle": "Workspace",
+  "workspaceTaskBoardTitle": "Task board",
+  "workspaceProgress": "{completed} of {total} tasks completed",
+  "@workspaceProgress": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "homeTitle": "Flutter Starter",
   "architectureTitle": "Recommended architecture",
   "architectureDescription": "The project is split into app, core, shared, and modules. Each module follows model, viewmodel, view, and page folders for a clear MVVM structure.",

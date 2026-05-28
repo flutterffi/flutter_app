@@ -24,6 +24,17 @@ class AppLocalizationsZh extends AppLocalizations {
   String get tabProfile => '我的';
 
   @override
+  String get workspaceTitle => '工作台';
+
+  @override
+  String get workspaceTaskBoardTitle => '任务看板';
+
+  @override
+  String workspaceProgress(int completed, int total) {
+    return '已完成 $completed/$total 个任务';
+  }
+
+  @override
   String get homeTitle => 'Flutter 架构模板';
 
   @override

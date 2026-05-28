@@ -128,6 +128,24 @@ abstract class AppLocalizations {
   /// **'Profile'**
   String get tabProfile;
 
+  /// No description provided for @workspaceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Workspace'**
+  String get workspaceTitle;
+
+  /// No description provided for @workspaceTaskBoardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Task board'**
+  String get workspaceTaskBoardTitle;
+
+  /// No description provided for @workspaceProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{completed} of {total} tasks completed'**
+  String workspaceProgress(int completed, int total);
+
   /// No description provided for @homeTitle.
   ///
   /// In en, this message translates to:

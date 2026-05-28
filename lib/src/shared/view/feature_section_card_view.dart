@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_app/src/core/constants/app_spacing.dart';
+
 class FeatureSectionCardView extends StatelessWidget {
   const FeatureSectionCardView({
     required this.title,
@@ -14,12 +16,12 @@ class FeatureSectionCardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(AppSpacing.lg),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(title, style: Theme.of(context).textTheme.titleLarge),
-            const SizedBox(height: 12),
+            const SizedBox(height: AppSpacing.sm),
             child,
           ],
         ),

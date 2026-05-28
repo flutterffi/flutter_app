@@ -3,7 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_app/l10n/app_localizations.dart';
 import 'package:flutter_app/gen/assets.gen.dart';
-import 'package:flutter_app/gen/colors.gen.dart';
+import 'package:flutter_app/src/core/constants/app_radius.dart';
+import 'package:flutter_app/src/core/constants/app_spacing.dart';
+import 'package:flutter_app/src/core/extensions/build_context_extension.dart';
+import 'package:flutter_app/src/core/theme/app_colors.dart';
+import 'package:flutter_app/src/core/widgets/app_content_container.dart';
 import 'package:flutter_app/src/modules/home/model/home_app_config_model.dart';
 import 'package:flutter_app/src/modules/home/model/home_api_item_model.dart';
 import 'package:flutter_app/src/modules/home/model/home_highlight_model.dart';
@@ -52,91 +56,105 @@ class HomeContentView extends StatelessWidget {
         ],
       ),
       body: ListView(
-        padding: const EdgeInsets.all(20),
+        padding: context.pagePadding(),
         children: [
-          FeatureSectionCardView(
-            title: l10n.architectureTitle,
+          AppContentContainer(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Assets.branding.appIcon.image(
-                      width: 42,
-                      height: 42,
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(child: Text(l10n.architectureDescription)),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(18),
-                  child: Assets.images.illustrations.homeHero.image(
-                    height: 132,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
+                FeatureSectionCardView(
+                  title: l10n.architectureTitle,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Assets.branding.appIcon.image(
+                            width: context.adaptiveSpace(42),
+                            height: context.adaptiveSpace(42),
+                          ),
+                          const SizedBox(width: AppSpacing.sm),
+                          Expanded(child: Text(l10n.architectureDescription)),
+                        ],
+                      ),
+                      const SizedBox(height: AppSpacing.md),
+                      ClipRRect(
+                        borderRadius: AppRadius.mediumValue,
+                        child: Assets.images.illustrations.homeHero.image(
+                          height: context.responsiveValue(
+                            132,
+                            medium: 180,
+                            expanded: 220,
+                          ),
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 16),
-          FeatureSectionCardView(
-            title: l10n.stackTitle,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                for (final item in highlights) ...[
-                  Text(item.title, style: Theme.of(context).textTheme.titleMedium),
-                  const SizedBox(height: 4),
-                  Text(item.description),
-                  const SizedBox(height: 12),
-                ],
-              ],
-            ),
-          ),
-          const SizedBox(height: 16),
-          FeatureSectionCardView(
-            title: l10n.homeMockApisTitle,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(l10n.homeMockApisDescription),
-                const SizedBox(height: 16),
-                apiListAsync.when(
-                  loading: () => const LinearProgressIndicator(),
-                  error: (error, stackTrace) =>
-                      Text(l10n.homeMockApisFailed(error.toString())),
-                  data: (apis) => Column(
+                const SizedBox(height: AppSpacing.md),
+                FeatureSectionCardView(
+                  title: l10n.stackTitle,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      for (final api in apis) ...[
-                        _HomeApiCard(api: api),
-                        if (api != apis.last) const SizedBox(height: 12),
+                      for (final item in highlights) ...[
+                        Text(
+                          item.title,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        const SizedBox(height: AppSpacing.xxs),
+                        Text(item.description),
+                        const SizedBox(height: AppSpacing.sm),
                       ],
                     ],
                   ),
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 16),
-          FeatureSectionCardView(
-            title: l10n.configTitle,
-            child: configAsync.when(
-              loading: () => const LinearProgressIndicator(),
-              error: (error, stackTrace) =>
-                  Text(l10n.configLoadFailed(error.toString())),
-              data: (config) => Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('${l10n.configAppName}: ${config.appName}'),
-                  Text('${l10n.configEnvironment}: ${config.environment}'),
-                  Text(
-                    '${l10n.configModules}: ${config.enabledModules.join(', ')}',
+                const SizedBox(height: AppSpacing.md),
+                FeatureSectionCardView(
+                  title: l10n.homeMockApisTitle,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(l10n.homeMockApisDescription),
+                      const SizedBox(height: AppSpacing.md),
+                      apiListAsync.when(
+                        loading: () => const LinearProgressIndicator(),
+                        error: (error, stackTrace) =>
+                            Text(l10n.homeMockApisFailed(error.toString())),
+                        data: (apis) => Column(
+                          children: [
+                            for (final api in apis) ...[
+                              _HomeApiCard(api: api),
+                              if (api != apis.last)
+                                const SizedBox(height: AppSpacing.sm),
+                            ],
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                const SizedBox(height: AppSpacing.md),
+                FeatureSectionCardView(
+                  title: l10n.configTitle,
+                  child: configAsync.when(
+                    loading: () => const LinearProgressIndicator(),
+                    error: (error, stackTrace) =>
+                        Text(l10n.configLoadFailed(error.toString())),
+                    data: (config) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('${l10n.configAppName}: ${config.appName}'),
+                        Text('${l10n.configEnvironment}: ${config.environment}'),
+                        Text(
+                          '${l10n.configModules}: ${config.enabledModules.join(', ')}',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -157,11 +175,11 @@ class _HomeApiCard extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: colorScheme.surfaceContainerLowest,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: AppRadius.mediumValue,
         border: Border.all(color: colorScheme.outlineVariant),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(AppSpacing.md),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -169,14 +187,16 @@ class _HomeApiCard extends StatelessWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
+                    horizontal: AppSpacing.xs + 2,
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
                     color: api.method == 'POST'
-                        ? ColorName.brandAccent.withValues(alpha: 0.14)
-                        : ColorName.brandPrimary.withValues(alpha: 0.14),
-                    borderRadius: BorderRadius.circular(999),
+                        ? AppColors.overlay(AppColors.accent)
+                        : AppColors.overlay(AppColors.primary),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(AppRadius.pill),
+                    ),
                   ),
                   child: Text(
                     api.method,
@@ -190,11 +210,11 @@ class _HomeApiCard extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: AppSpacing.sm),
             Text(api.title, style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: 4),
+            const SizedBox(height: AppSpacing.xxs),
             Text(api.path, style: Theme.of(context).textTheme.bodySmall),
-            const SizedBox(height: 8),
+            const SizedBox(height: AppSpacing.xs),
             Text(api.summary),
           ],
         ),

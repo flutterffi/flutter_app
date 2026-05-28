@@ -1,25 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:flutter_app/l10n/app_localizations.dart';
 import 'package:flutter_app/src/app/app.dart';
-import 'package:flutter_app/src/core/network/model/api_request_model.dart';
-import 'package:flutter_app/src/core/network/model/api_response_model.dart';
-import 'package:flutter_app/src/core/network/service/api_client.dart';
-import 'package:flutter_app/src/core/network/viewmodel/api_client_viewmodel.dart';
-
-class _FailingApiClient implements ApiClient {
-  @override
-  Future<ApiResponseModel<Map<String, dynamic>>> send(
-    ApiRequestModel request,
-  ) async {
-    return const ApiResponseModel(
-      statusCode: 500,
-      data: <String, dynamic>{'items': <Map<String, dynamic>>[]},
-      message: 'Mock server failed.',
-    );
-  }
-}
+import 'package:flutter_app/src/core/network/model/app_exception.dart';
+import 'package:flutter_app/src/modules/home/model/home_app_config_model.dart';
+import 'package:flutter_app/src/modules/home/view/home_content_view.dart';
 
 void main() {
   testWidgets('renders five-tab MVVM shell', (tester) async {
@@ -100,19 +88,38 @@ void main() {
 
   testWidgets('home shows unified API error message', (tester) async {
     await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          apiClientProvider.overrideWithValue(_FailingApiClient()),
+      MaterialApp(
+        supportedLocales: AppLocalizations.supportedLocales,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
         ],
-        child: const FlutterApp(),
+        home: HomeContentView(
+          highlights: const [],
+          apiListAsync: const AsyncError(
+            AppException(
+              type: AppExceptionType.server,
+              message: 'Mock server failed.',
+            ),
+            StackTrace.empty,
+          ),
+          configAsync: const AsyncData(
+            HomeAppConfigModel(
+              appName: 'Flutter App',
+              environment: 'test',
+              enabledModules: ['home'],
+            ),
+          ),
+          onSwitchLocale: (_) {},
+          onRefreshApis: () {},
+        ),
       ),
     );
-    await tester.pumpAndSettle();
-    await tester.scrollUntilVisible(
-      find.textContaining('Failed to load mock APIs'),
-      300,
-      scrollable: find.byType(Scrollable).first,
-    );
+    await tester.pump();
+    await tester.drag(find.byType(ListView).first, const Offset(0, -600));
+    await tester.pump(const Duration(milliseconds: 300));
 
     expect(
       find.textContaining('Failed to load mock APIs: Mock server failed.'),

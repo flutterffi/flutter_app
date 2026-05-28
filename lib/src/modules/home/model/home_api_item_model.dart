@@ -14,4 +14,15 @@ class HomeApiItemModel {
   final String title;
   final String summary;
   final String latencyLabel;
+
+  factory HomeApiItemModel.fromJson(Map<String, dynamic> json) {
+    return HomeApiItemModel(
+      id: json['id'] as String? ?? '',
+      method: json['method'] as String? ?? '',
+      path: json['path'] as String? ?? '',
+      title: json['title'] as String? ?? '',
+      summary: json['summary'] as String? ?? '',
+      latencyLabel: json['latencyLabel'] as String? ?? '',
+    );
+  }
 }

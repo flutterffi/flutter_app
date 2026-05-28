@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import 'package:flutter_app/src/core/network/viewmodel/api_client_viewmodel.dart';
 import 'package:flutter_app/src/modules/home/data/home_api_repository.dart';
 import 'package:flutter_app/src/modules/home/model/home_api_item_model.dart';
 import 'package:flutter_app/src/modules/home/model/home_highlight_model.dart';
@@ -26,7 +27,8 @@ List<HomeHighlightModel> homeViewmodel(HomeViewmodelRef ref) {
 
 @riverpod
 HomeApiRepository homeApiRepository(HomeApiRepositoryRef ref) {
-  return HomeApiRepository();
+  final apiClient = ref.watch(apiClientProvider);
+  return HomeApiRepository(apiClient: apiClient);
 }
 
 @riverpod

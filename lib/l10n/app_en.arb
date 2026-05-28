@@ -32,6 +32,7 @@
   "homeTitle": "Flutter Starter",
   "homeRefreshApis": "Refresh APIs",
   "homeMockApisTitle": "Mock API endpoints",
+  "homeMockApisDescription": "These cards come through the shared API client abstraction, so the data layer can switch from mock to real endpoints later.",
   "homeMockApisFailed": "Failed to load mock APIs: {message}",
   "@homeMockApisFailed": {
     "placeholders": {

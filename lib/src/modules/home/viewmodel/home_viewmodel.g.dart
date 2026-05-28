@@ -24,7 +24,7 @@ final homeViewmodelProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef HomeViewmodelRef = AutoDisposeProviderRef<List<HomeHighlightModel>>;
-String _$homeApiRepositoryHash() => r'9fe77a18dba6c7df806b8db045e97152e4601c8b';
+String _$homeApiRepositoryHash() => r'9a13ef220e80990394d75823615d1fdc3f2370ba';
 
 /// See also [homeApiRepository].
 @ProviderFor(homeApiRepository)

@@ -200,6 +200,12 @@ abstract class AppLocalizations {
   /// **'Mock API endpoints'**
   String get homeMockApisTitle;
 
+  /// No description provided for @homeMockApisDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'These cards come through the shared API client abstraction, so the data layer can switch from mock to real endpoints later.'**
+  String get homeMockApisDescription;
+
   /// No description provided for @homeMockApisFailed.
   ///
   /// In en, this message translates to:

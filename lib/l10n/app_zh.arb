@@ -32,6 +32,7 @@
   "homeTitle": "Flutter 架构模板",
   "homeRefreshApis": "刷新接口",
   "homeMockApisTitle": "测试接口列表",
+  "homeMockApisDescription": "这些卡片已经走统一 API Client 抽象，后续从 mock 切到真实接口时，只需要替换 data 层。",
   "homeMockApisFailed": "测试接口加载失败：{message}",
   "@homeMockApisFailed": {
     "placeholders": {

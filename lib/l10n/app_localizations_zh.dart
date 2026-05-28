@@ -64,6 +64,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get homeMockApisTitle => '测试接口列表';
 
   @override
+  String get homeMockApisDescription =>
+      '这些卡片已经走统一 API Client 抽象，后续从 mock 切到真实接口时，只需要替换 data 层。';
+
+  @override
   String homeMockApisFailed(Object message) {
     return '测试接口加载失败：$message';
   }

@@ -74,18 +74,25 @@ class HomeContentView extends StatelessWidget {
           const SizedBox(height: 16),
           FeatureSectionCardView(
             title: l10n.homeMockApisTitle,
-            child: apiListAsync.when(
-              loading: () => const LinearProgressIndicator(),
-              error: (error, stackTrace) =>
-                  Text(l10n.homeMockApisFailed(error.toString())),
-              data: (apis) => Column(
-                children: [
-                  for (final api in apis) ...[
-                    _HomeApiCard(api: api),
-                    if (api != apis.last) const SizedBox(height: 12),
-                  ],
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(l10n.homeMockApisDescription),
+                const SizedBox(height: 16),
+                apiListAsync.when(
+                  loading: () => const LinearProgressIndicator(),
+                  error: (error, stackTrace) =>
+                      Text(l10n.homeMockApisFailed(error.toString())),
+                  data: (apis) => Column(
+                    children: [
+                      for (final api in apis) ...[
+                        _HomeApiCard(api: api),
+                        if (api != apis.last) const SizedBox(height: 12),
+                      ],
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 16),

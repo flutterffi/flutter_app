@@ -64,6 +64,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeMockApisTitle => 'Mock API endpoints';
 
   @override
+  String get homeMockApisDescription =>
+      'These cards come through the shared API client abstraction, so the data layer can switch from mock to real endpoints later.';
+
+  @override
   String homeMockApisFailed(Object message) {
     return 'Failed to load mock APIs: $message';
   }

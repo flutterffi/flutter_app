@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import 'package:flutter_app/src/core/config/viewmodel/app_config_viewmodel.dart';
 import 'package:flutter_app/src/core/network/config/network_config.dart';
 import 'package:flutter_app/src/core/network/service/api_client.dart';
 import 'package:flutter_app/src/core/network/service/dio_api_client.dart';
@@ -10,9 +11,11 @@ part 'api_client_viewmodel.g.dart';
 
 @riverpod
 NetworkConfig networkConfig(Ref ref) {
-  return const NetworkConfig(
-    baseUrl: 'https://jsonplaceholder.typicode.com',
-    useMockClient: true,
+  final appConfig = ref.watch(appConfigProvider);
+
+  return NetworkConfig(
+    baseUrl: appConfig.apiBaseUrl,
+    useMockClient: appConfig.useMockClient,
   );
 }
 

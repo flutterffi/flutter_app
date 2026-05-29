@@ -2,16 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_app/l10n/app_localizations.dart';
 import 'package:flutter_app/src/app/app.dart';
 import 'package:flutter_app/src/core/network/model/app_exception.dart';
+import 'package:flutter_app/src/core/storage/viewmodel/app_storage_viewmodel.dart';
 import 'package:flutter_app/src/modules/home/model/home_app_config_model.dart';
 import 'package:flutter_app/src/modules/home/view/home_content_view.dart';
 
 void main() {
+  Future<void> pumpFlutterApp(
+    WidgetTester tester, {
+    Map<String, Object> initialPrefs = const <String, Object>{},
+  }) async {
+    SharedPreferences.setMockInitialValues(initialPrefs);
+    final preferences = await SharedPreferences.getInstance();
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          sharedPreferencesProvider.overrideWithValue(preferences),
+        ],
+        child: const FlutterApp(),
+      ),
+    );
+  }
+
   testWidgets('renders five-tab MVVM shell', (tester) async {
-    await tester.pumpWidget(const ProviderScope(child: FlutterApp()));
+    await pumpFlutterApp(tester);
     await tester.pump(const Duration(milliseconds: 700));
 
     expect(find.text('Home'), findsOneWidget);
@@ -28,7 +47,7 @@ void main() {
   });
 
   testWidgets('workspace task board updates progress', (tester) async {
-    await tester.pumpWidget(const ProviderScope(child: FlutterApp()));
+    await pumpFlutterApp(tester);
     await tester.pump(const Duration(milliseconds: 300));
 
     await tester.tap(find.text('Workspace'));
@@ -44,7 +63,7 @@ void main() {
   });
 
   testWidgets('discover renders featured article example', (tester) async {
-    await tester.pumpWidget(const ProviderScope(child: FlutterApp()));
+    await pumpFlutterApp(tester);
     await tester.pump(const Duration(milliseconds: 700));
 
     await tester.tap(find.text('Discover'));
@@ -56,11 +75,18 @@ void main() {
   });
 
   testWidgets('profile login flow validates and succeeds', (tester) async {
-    await tester.pumpWidget(const ProviderScope(child: FlutterApp()));
+    await pumpFlutterApp(tester);
     await tester.pump(const Duration(milliseconds: 300));
 
     await tester.tap(find.text('Profile'));
-    await tester.pump(const Duration(milliseconds: 300));
+    for (var i = 0; i < 10; i++) {
+      await tester.pump(const Duration(milliseconds: 100));
+      if (find.byKey(const Key('profile_email_field')).evaluate().isNotEmpty) {
+        break;
+      }
+    }
+
+    expect(find.byKey(const Key('profile_email_field')), findsOneWidget);
 
     await tester.tap(find.text('Log in'));
     await tester.pump(const Duration(milliseconds: 100));
@@ -87,33 +113,40 @@ void main() {
   });
 
   testWidgets('home shows unified API error message', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    final preferences = await SharedPreferences.getInstance();
     await tester.pumpWidget(
-      MaterialApp(
-        supportedLocales: AppLocalizations.supportedLocales,
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
+      ProviderScope(
+        overrides: [
+          sharedPreferencesProvider.overrideWithValue(preferences),
         ],
-        home: HomeContentView(
-          highlights: const [],
-          apiListAsync: const AsyncError(
-            AppException(
-              type: AppExceptionType.server,
-              message: 'Mock server failed.',
+        child: MaterialApp(
+          supportedLocales: AppLocalizations.supportedLocales,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          home: HomeContentView(
+            highlights: const [],
+            apiListAsync: const AsyncError(
+              AppException(
+                type: AppExceptionType.server,
+                message: 'Mock server failed.',
+              ),
+              StackTrace.empty,
             ),
-            StackTrace.empty,
-          ),
-          configAsync: const AsyncData(
-            HomeAppConfigModel(
-              appName: 'Flutter App',
-              environment: 'test',
-              enabledModules: ['home'],
+            configAsync: const AsyncData(
+              HomeAppConfigModel(
+                appName: 'Flutter App',
+                environment: 'test',
+                enabledModules: ['home'],
+              ),
             ),
+            onSwitchLocale: (_) {},
+            onRefreshApis: () {},
           ),
-          onSwitchLocale: (_) {},
-          onRefreshApis: () {},
         ),
       ),
     );

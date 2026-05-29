@@ -6,6 +6,7 @@ class ProfileModel {
     required this.password,
     required this.isPasswordVisible,
     required this.isLoggedIn,
+    required this.isRestoringSession,
     required this.errorMessage,
   });
 
@@ -15,6 +16,7 @@ class ProfileModel {
   final String password;
   final bool isPasswordVisible;
   final bool isLoggedIn;
+  final bool isRestoringSession;
   final String? errorMessage;
 
   ProfileModel copyWith({
@@ -24,6 +26,7 @@ class ProfileModel {
     String? password,
     bool? isPasswordVisible,
     bool? isLoggedIn,
+    bool? isRestoringSession,
     String? errorMessage,
     bool clearErrorMessage = false,
   }) {
@@ -34,6 +37,7 @@ class ProfileModel {
       password: password ?? this.password,
       isPasswordVisible: isPasswordVisible ?? this.isPasswordVisible,
       isLoggedIn: isLoggedIn ?? this.isLoggedIn,
+      isRestoringSession: isRestoringSession ?? this.isRestoringSession,
       errorMessage: clearErrorMessage
           ? null
           : errorMessage ?? this.errorMessage,

@@ -48,7 +48,7 @@ final class NetworkConfigProvider
   }
 }
 
-String _$networkConfigHash() => r'1f2f788a563165f78f4b352883959ad0620b1bb6';
+String _$networkConfigHash() => r'a0461b3d798621a771bb77e0456f4d2153d41591';
 
 @ProviderFor(dio)
 final dioProvider = DioProvider._();

@@ -59,6 +59,35 @@ class MockApiClient implements ApiClient {
           },
           message: 'Mock featured article loaded.',
         );
+      case 'POST /mock/login':
+        final body = request.body as Map<String, Object?>? ?? const {};
+        final email = (body['email'] as String? ?? '').trim();
+        final password = (body['password'] as String? ?? '').trim();
+
+        if (email.isEmpty || password.isEmpty) {
+          return const ApiResponseModel(
+            statusCode: 400,
+            data: <String, dynamic>{},
+            message: 'Email and password are required.',
+          );
+        }
+
+        if (password.length < 6) {
+          return const ApiResponseModel(
+            statusCode: 401,
+            data: <String, dynamic>{},
+            message: 'Invalid credentials.',
+          );
+        }
+
+        return ApiResponseModel(
+          statusCode: 200,
+          data: {
+            'email': email,
+            'token': 'mock-token-${email.hashCode}',
+          },
+          message: 'Mock login succeeded.',
+        );
       default:
         return ApiResponseModel(
           statusCode: 404,

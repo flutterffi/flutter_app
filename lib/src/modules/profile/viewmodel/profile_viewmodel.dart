@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:flutter_app/src/core/auth/model/auth_session.dart';
-import 'package:flutter_app/src/core/auth/service/auth_session_repository.dart';
+import 'package:flutter_app/src/core/auth/viewmodel/auth_session_controller.dart';
 import 'package:flutter_app/src/modules/profile/model/profile_model.dart';
 
 part 'profile_viewmodel.g.dart';
@@ -21,8 +21,28 @@ class ProfileViewmodel extends _$ProfileViewmodel {
       errorMessage: null,
     );
 
-    final repository = _repositoryOrNull();
-    final session = repository == null ? null : await repository.restore();
+    ref.listen<AsyncValue<AuthSession?>>(
+      authSessionControllerProvider,
+      (previous, next) {
+        final current = state.asData?.value;
+        if (current == null) {
+          return;
+        }
+
+        final session = next.asData?.value;
+
+        state = AsyncData(
+          current.copyWith(
+            email: session?.email ?? current.email,
+            isLoggedIn: session != null,
+            isRestoringSession: next.isLoading,
+            clearErrorMessage: next.hasValue,
+          ),
+        );
+      },
+    );
+
+    final session = await ref.watch(authSessionControllerProvider.future);
 
     return baseState.copyWith(
       email: session?.email ?? '',
@@ -32,14 +52,6 @@ class ProfileViewmodel extends _$ProfileViewmodel {
   }
 
   ProfileModel get _current => state.requireValue;
-
-  AuthSessionRepository? _repositoryOrNull() {
-    try {
-      return ref.read(authSessionRepositoryProvider);
-    } on UnimplementedError {
-      return null;
-    }
-  }
 
   void updateEmail(String value) {
     state = AsyncData(_current.copyWith(email: value, clearErrorMessage: true));
@@ -90,38 +102,17 @@ class ProfileViewmodel extends _$ProfileViewmodel {
       return;
     }
 
-    final repository = _repositoryOrNull();
-    if (repository != null) {
-      await repository.save(
-        AuthSession(
-          email: email,
-          token: 'mock-token-${email.hashCode}',
-        ),
-      );
-    }
-
-    state = AsyncData(
-      _current.copyWith(
-        email: email,
-        isLoggedIn: true,
-        isRestoringSession: false,
-        errorMessage: null,
-      ),
-    );
+    await ref
+        .read(authSessionControllerProvider.notifier)
+        .login(email: email, password: password);
   }
 
   Future<void> logout() async {
-    final repository = _repositoryOrNull();
-    if (repository != null) {
-      await repository.clear();
-    }
-
+    await ref.read(authSessionControllerProvider.notifier).logout();
     state = AsyncData(
       _current.copyWith(
-        isLoggedIn: false,
         password: '',
         isPasswordVisible: false,
-        isRestoringSession: false,
         clearErrorMessage: true,
       ),
     );

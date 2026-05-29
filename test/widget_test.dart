@@ -106,7 +106,12 @@ void main() {
     await tester.pump(const Duration(milliseconds: 100));
 
     await tester.tap(find.text('Log in'));
-    await tester.pump(const Duration(milliseconds: 300));
+    for (var i = 0; i < 10; i++) {
+      await tester.pump(const Duration(milliseconds: 100));
+      if (find.text('Welcome back, demo@example.com').evaluate().isNotEmpty) {
+        break;
+      }
+    }
 
     expect(find.text('Welcome back, demo@example.com'), findsOneWidget);
     expect(find.text('Log out'), findsOneWidget);

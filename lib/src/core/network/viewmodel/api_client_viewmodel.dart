@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import 'package:flutter_app/src/core/auth/viewmodel/auth_session_controller.dart';
 import 'package:flutter_app/src/core/config/viewmodel/app_config_viewmodel.dart';
 import 'package:flutter_app/src/core/network/config/network_config.dart';
 import 'package:flutter_app/src/core/network/service/api_client.dart';
@@ -36,7 +39,18 @@ Dio dio(Ref ref) {
     InterceptorsWrapper(
       onRequest: (options, handler) {
         options.headers['X-App-Client'] = 'flutter_app';
+        final token =
+            ref.read(authSessionControllerProvider).asData?.value?.token;
+        if (token != null && token.isNotEmpty) {
+          options.headers['Authorization'] = 'Bearer $token';
+        }
         handler.next(options);
+      },
+      onError: (error, handler) {
+        if (error.response?.statusCode == 401) {
+          unawaited(ref.read(authSessionControllerProvider.notifier).logout());
+        }
+        handler.next(error);
       },
     ),
   );

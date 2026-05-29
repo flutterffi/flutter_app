@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_app/src/core/adaptive/app_design.dart';
+import 'package:flutter_app/src/core/adaptive/app_scaler.dart';
 import 'package:flutter_app/src/core/constants/app_breakpoints.dart';
 
 extension BuildContextExtension on BuildContext {
@@ -40,21 +40,19 @@ extension BuildContextExtension on BuildContext {
   }
 
   double designWidth(double value) {
-    return (screenWidth / AppDesign.width) * value;
+    return AppScaler.width(value);
   }
 
   double designHeight(double value) {
-    return (screenHeight / AppDesign.height) * value;
+    return AppScaler.height(value);
   }
 
   double designRadius(double value) {
-    return value * ((screenWidth / AppDesign.width).clamp(0.9, 1.2));
+    return AppScaler.radius(value);
   }
 
   double designFont(double value) {
-    final widthScale = screenWidth / AppDesign.width;
-    final heightScale = screenHeight / AppDesign.height;
-    return value * ((widthScale + heightScale) / 2).clamp(0.9, 1.15);
+    return AppScaler.font(value);
   }
 
   double responsiveValue(

@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_app/l10n/app_localizations.dart';
+import 'package:flutter_app/src/core/adaptive/app_design_initializer.dart';
 import 'package:flutter_app/src/core/config/viewmodel/app_config_viewmodel.dart';
 import 'package:flutter_app/src/core/localization/locale_controller.dart';
 import 'package:flutter_app/src/core/router/app_router.dart';
@@ -22,6 +23,9 @@ class FlutterApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       locale: locale,
+      builder: (context, child) => AppDesignInitializer(
+        child: child ?? const SizedBox.shrink(),
+      ),
       routerConfig: router,
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: const [
